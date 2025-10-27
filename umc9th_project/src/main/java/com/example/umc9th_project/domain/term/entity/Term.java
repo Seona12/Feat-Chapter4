@@ -1,7 +1,5 @@
 package com.example.umc9th_project.domain.term.entity;
 
-package com.example.umc9th_project.domain.term.entity;
-
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.ArrayList;

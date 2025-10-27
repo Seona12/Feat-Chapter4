@@ -2,43 +2,55 @@ package com.example.umc9th_project.domain.member.entity;
 
 import com.example.umc9th_project.domain.model.entity.BaseTimeEntity;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Entity
-@Getter
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
+@Table(name = "member")
 public class Member extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "member_id", nullable = false)
     private Long id;
 
-    @Column(nullable = false)
-    private String name; // 이름
+    @Column(name = "name", length = 3, nullable = false)
+    private String name;
 
+    @Column(name = "gender", nullable = false)
     @Enumerated(EnumType.STRING)
-    private Gender gender; // 성별
+    @Builder.Default
+    private Gender gender = Gender.NONE;
 
-    private LocalDate birth; //생년월일
+    @Column(name = "birth", nullable = false)
+    private LocalDate birth;
 
+    @Column(name = "address", nullable = false)
     @Enumerated(EnumType.STRING)
-    private Address address; // 주소
+    private Address address;
 
-    private String detail_address; // 상세주소
+    @Column(name = "detail_address", nullable = false)
+    private String detailAddress;
 
-    private String socialuId; //소셜 UID
+    @Column(name = "social_uid", nullable = false)
+    private String socialUid;
 
+    @Column(name = "social_type", nullable = false)
     @Enumerated(EnumType.STRING)
-    private SocialType socialType; //소셜 타입
+    private SocialType socialType;
 
-    private int point; //포인트
-    private String email; // 이메일
-    private String phoneNumber; //전화번호
+    @Column(name = "point", nullable = false)
+    private Integer point;
 
-    //삭제일자, 수정일자는 BaseTimeEntity
+    @Column(name = "email", nullable = false)
+    private String email;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
 
 }

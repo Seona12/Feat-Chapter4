@@ -24,8 +24,4 @@ public class Food {
     @OneToMany(mappedBy = "food", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MemberFood> memberFoods = new ArrayList<>();
 
-    public void addMemberFood(MemberFood memberFood) {
-        memberFoods.add(memberFood);
-        memberFood.setFood(this);
-    }
 }

@@ -31,6 +31,12 @@ public class Mission {
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
+    @Column(nullable = false)
+    private String status;
+
+    @Column(nullable = false)
+    private String location;
+
     // --- 연관 관계 ---
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id", nullable = false)
