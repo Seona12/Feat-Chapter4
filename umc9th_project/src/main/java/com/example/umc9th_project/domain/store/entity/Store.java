@@ -1,15 +1,17 @@
 package com.example.umc9th_project.domain.store.entity;
 
 import com.example.umc9th_project.domain.location.entity.Location;
+import com.example.umc9th_project.domain.model.entity.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-@Builder
-public class Store {
+@SuperBuilder
+public class Store extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
