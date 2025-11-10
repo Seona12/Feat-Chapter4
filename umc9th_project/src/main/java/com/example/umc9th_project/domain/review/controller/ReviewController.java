@@ -1,5 +1,7 @@
 package com.example.umc9th_project.domain.review.controller;
 
+import com.example.umc9th_project.common.dto.ApiResponseDto;
+
 import com.example.umc9th_project.domain.review.dto.ReviewRes;
 import com.example.umc9th_project.domain.review.service.ReviewService;
 import lombok.RequiredArgsConstructor;
@@ -19,12 +21,17 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     @GetMapping
-    public ResponseEntity<List<ReviewRes>> getReviews(
+    public ApiResponseDto<List<ReviewRes>> getReviews(
             @RequestParam(required = false) Long storeId,
             @RequestParam(required = false) Integer rating
     ) {
         List<ReviewRes> response = reviewService.getReviews(storeId, rating);
-        return ResponseEntity.ok(response);
+
+        if (response == null || response.isEmpty()) {
+            throw new RuntimeException("조회된 리뷰가 없습니다.");
+        }
+
+        return ApiResponseDto.onSuccess(response);
     }
 }
 
