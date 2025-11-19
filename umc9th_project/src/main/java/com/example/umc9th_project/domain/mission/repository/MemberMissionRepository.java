@@ -1,5 +1,6 @@
 package com.example.umc9th_project.domain.mission.repository;
 
+import com.example.umc9th_project.domain.member.entity.Member;
 import com.example.umc9th_project.domain.mission.entity.MemberMission;
 import com.example.umc9th_project.domain.mission.entity.Mission;
 import org.springframework.data.domain.Page;
@@ -18,4 +19,5 @@ public interface MemberMissionRepository extends JpaRepository<MemberMission, Lo
             @Param("isComplete") Boolean isComplete,
             Pageable pageable
     );
+    boolean existsByMemberAndMission(Member member, Mission mission);
 }

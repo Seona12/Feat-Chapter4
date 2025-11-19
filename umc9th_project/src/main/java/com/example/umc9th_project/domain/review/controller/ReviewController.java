@@ -2,14 +2,12 @@ package com.example.umc9th_project.domain.review.controller;
 
 import com.example.umc9th_project.common.dto.ApiResponseDto;
 
+import com.example.umc9th_project.domain.review.dto.ReviewReq;
 import com.example.umc9th_project.domain.review.dto.ReviewRes;
 import com.example.umc9th_project.domain.review.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,5 +31,11 @@ public class ReviewController {
 
         return ApiResponseDto.onSuccess(response);
     }
+
+    @PostMapping
+    public ApiResponseDto<Long> createReview(@RequestBody ReviewReq request) {
+        return ApiResponseDto.onSuccess(reviewService.createReview(request));
+    }
+
 }
 

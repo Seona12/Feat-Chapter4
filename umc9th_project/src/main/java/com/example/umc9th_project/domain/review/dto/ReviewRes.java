@@ -10,6 +10,7 @@ public record ReviewRes(
         String content,
         Float star,
         String storeName,
+        Long storeId,
         String createdAt
 ) {
     public static ReviewRes from(Review review) {
@@ -20,6 +21,7 @@ public record ReviewRes(
                 .createdAt(review.getCreatedAt() != null
                         ? review.getCreatedAt().toString()
                         : "(no date)")
+                .storeId(review.getStore().getStoreId())
                 .build();
     }
 }
