@@ -1,11 +1,13 @@
 package com.example.umc9th_project.domain.member.entity;
 
 import com.example.umc9th_project.domain.model.entity.BaseTimeEntity;
+import com.example.umc9th_project.domain.review.entity.Review;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @SuperBuilder
@@ -53,5 +55,9 @@ public class Member extends BaseTimeEntity {
 
     @Column(name = "phone_number")
     private String phoneNumber;
+
+    @OneToMany(mappedBy = "member")
+    private List<Review> reviews;
+
 
 }

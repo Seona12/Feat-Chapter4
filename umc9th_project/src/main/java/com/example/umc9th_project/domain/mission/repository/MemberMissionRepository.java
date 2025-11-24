@@ -20,4 +20,5 @@ public interface MemberMissionRepository extends JpaRepository<MemberMission, Lo
             Pageable pageable
     );
     boolean existsByMemberAndMission(Member member, Mission mission);
+    Page<MemberMission> findByMember_IdAndIsCompleteFalse(Long memberId, Pageable pageable);
 }

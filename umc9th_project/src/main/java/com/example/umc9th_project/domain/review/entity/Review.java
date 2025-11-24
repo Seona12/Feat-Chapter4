@@ -48,4 +48,7 @@ public class Review {
     @JoinColumn(name = "store_id", nullable = true)
     private Store store;
 
+    public String getCreatedAt() {
+        return createdAt.toString();
+    }
 }

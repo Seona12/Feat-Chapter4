@@ -24,4 +24,6 @@ public class MemberController {
         return ApiResponseDto.onSuccess(memberCommandService.signup(dto));
 
     }
+
+
 }
