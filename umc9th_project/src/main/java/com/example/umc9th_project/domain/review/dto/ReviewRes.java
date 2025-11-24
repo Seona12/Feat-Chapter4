@@ -4,6 +4,9 @@ package com.example.umc9th_project.domain.review.dto;
 import com.example.umc9th_project.domain.review.entity.Review;
 import lombok.Builder;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Builder
 public record ReviewRes(
         Long id,
@@ -24,4 +27,22 @@ public record ReviewRes(
                 .storeId(review.getStore().getStoreId())
                 .build();
     }
+
+    @Builder
+    public record ReviewPreViewListDTO(
+            List<ReviewPreViewDTO> reviewList,
+            Integer listSize,
+            Integer totalPage,
+            Long totalElements,
+            Boolean isFirst,
+            Boolean isLast
+    ){}
+
+    @Builder
+    public record ReviewPreViewDTO(
+            String ownerNickname,
+            Float score,
+            String body,
+            LocalDate createdAt
+    ){}
 }
