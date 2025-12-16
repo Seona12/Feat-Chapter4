@@ -1,5 +1,6 @@
 package com.example.umc9th_project.domain.member.entity;
 
+import com.example.umc9th_project.auth.Role;
 import com.example.umc9th_project.domain.model.entity.BaseTimeEntity;
 import com.example.umc9th_project.domain.review.entity.Review;
 import jakarta.persistence.*;
@@ -24,6 +25,15 @@ public class Member extends BaseTimeEntity {
 
     @Column(name = "name", length = 3, nullable = true)
     private String name;
+
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @Column(name = "gender", nullable = true)
     @Enumerated(EnumType.STRING)
@@ -50,8 +60,6 @@ public class Member extends BaseTimeEntity {
     @Column(name = "point", nullable = true)
     private Integer point;
 
-    @Column(name = "email", nullable = true)
-    private String email;
 
     @Column(name = "phone_number")
     private String phoneNumber;
