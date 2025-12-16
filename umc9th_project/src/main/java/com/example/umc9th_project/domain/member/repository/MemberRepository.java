@@ -9,4 +9,5 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     // 2. 마이 페이지 화면 쿼리 (메서드 생성 방식 권장)
     Optional<Member> findById(Long id);
 
+    Optional<Member> findByEmail(String username);
 }

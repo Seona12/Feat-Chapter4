@@ -28,4 +28,12 @@ public class MemberReqDTO {
             String specAddress,
             List<Long> preferCategory
     ){}
+
+    // 로그인
+    public record LoginDTO(
+            @NotBlank
+            String email,
+            @NotBlank
+            String password
+    ){}
 }
