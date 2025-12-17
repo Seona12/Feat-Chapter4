@@ -21,3 +21,23 @@ spring:
   webhook:
     discord:
       url: ${DISCORD_WEBHOOK_URL}
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            scope:
+              - email
+              - profile
+
+    jwt:
+      token:
+        # 최소 32바이트 이상(문자열로 32자 이상이면 안전)
+        secretKey: ${JWT_SECRET}
+        expiration:
+          access: 1800000      # 30분 (밀리초)
+          refresh: 1209600000  # 14일 (밀리초)
+
